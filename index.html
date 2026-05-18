@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>OC工坊 · 白境黑金｜全自定义空表</title>
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <style>
@@ -299,7 +299,6 @@
 <div class="oc-card" id="captureCard">
     <div class="card-inner">
         <div class="split-layout">
-            <!-- 左侧面板 -->
             <div class="left-panel">
                 <div class="section">
                     <div class="section-title">✦ 角色真名</div>
@@ -320,7 +319,6 @@
                     </div>
                 </div>
 
-                <!-- 情感依恋 8个选项 -->
                 <div class="section">
                     <div class="section-title">✦ 情感依恋</div>
                     <div class="btn-group" id="loveStyleGroup">
@@ -335,7 +333,6 @@
                     </div>
                 </div>
 
-                <!-- 处世基调 8个选项 -->
                 <div class="section">
                     <div class="section-title">✦ 处世基调</div>
                     <div class="btn-group" id="roleGroup">
@@ -350,7 +347,6 @@
                     </div>
                 </div>
 
-                <!-- 政治光谱 6个 -->
                 <div class="section">
                     <div class="section-title">✦ 政治光谱</div>
                     <div class="btn-group" id="ideologyGroup">
@@ -363,7 +359,6 @@
                     </div>
                 </div>
 
-                <!-- 阵营九宫格 9个 -->
                 <div class="section">
                     <div class="section-title">✦ 阵营九宫格</div>
                     <div class="btn-group" id="alignmentGroup">
@@ -380,7 +375,6 @@
                 </div>
             </div>
 
-            <!-- 右侧面板 -->
             <div class="right-panel">
                 <div class="section">
                     <div class="section-title">✦ 六维棱镜</div>
@@ -390,25 +384,21 @@
                     </div>
                 </div>
 
-                <!-- 双极倾向 -->
                 <div class="section">
                     <div class="section-title">✦ 双极倾向</div>
                     <div id="dualSliderContainer"></div>
                 </div>
 
-                <!-- 性格秤量 -->
                 <div class="section">
                     <div class="section-title">✦ 性格秤量</div>
                     <div id="traitsContainer"></div>
                 </div>
 
-                <!-- 深层秉性 -->
                 <div class="section">
                     <div class="section-title">✦ 深层秉性</div>
                     <div id="fiveTraitsContainer"></div>
                 </div>
 
-                <!-- 外貌描写 无预设 -->
                 <div class="textarea-block">
                     <label class="gold-label">外貌描写</label>
                     <textarea class="auto-height" rows="1" id="appearance" placeholder="发色、瞳色、特征服饰……"></textarea>
@@ -418,7 +408,6 @@
                     <textarea class="auto-height" rows="2" id="backstory" placeholder="过往经历，重要转折……"></textarea>
                 </div>
 
-                <!-- 其他/补充 -->
                 <div class="section">
                     <div class="section-title">✦ 其他·补充</div>
                     <textarea class="auto-height" rows="2" id="otherNotes" placeholder="口头禅、秘密、信物……"></textarea>
@@ -815,30 +804,73 @@
             });
         }
 
+        // 修复2：深度重写截图保存机制，全方位适配手机长文本和视口裁切
         function exportCard() {
             const card = document.getElementById('captureCard');
-            html2canvas(card, { scale: 2.5, backgroundColor: '#FFFFFF' }).then(canvas => {
+            const exportBtn = document.getElementById('exportBtn');
+            const textareas = card.querySelectorAll('textarea');
+
+            // 临时撑开文本框，捕捉完整历史字迹
+            const savedStyles = [];
+            textareas.forEach((ta) => {
+                savedStyles.push({
+                    height: ta.style.height,
+                    overflow: ta.style.overflow
+                });
+                ta.style.height = 'auto';
+                ta.style.height = ta.scrollHeight + 'px';
+                ta.style.overflow = 'visible';
+            });
+
+            if(exportBtn) exportBtn.style.opacity = '0';
+
+            html2canvas(card, { 
+                scale: 2.8, 
+                backgroundColor: '#FFFFFF',
+                useCORS: true,
+                allowTaint: true,
+                scrollY: 0, 
+                scrollX: 0,
+                windowWidth: card.scrollWidth,
+                windowHeight: card.scrollHeight
+            }).then(canvas => {
                 const imgData = canvas.toDataURL('image/png');
+                
+                // 瞬间恢复原版网页滚动布局
+                textareas.forEach((ta, index) => {
+                    ta.style.height = savedStyles[index].height;
+                    ta.style.overflow = savedStyles[index].overflow;
+                });
+                if(exportBtn) exportBtn.style.opacity = '1';
+
                 const modal = document.createElement('div');
                 modal.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:9999;backdrop-filter:blur(4px);';
+                
                 const img = document.createElement('img');
                 img.src = imgData;
                 img.style.maxWidth = '90%';
-                img.style.maxHeight = '70%';
+                img.style.maxHeight = '75%';
                 img.style.borderRadius = '28px';
                 img.style.border = '2px solid #D4AF37';
+                img.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
+                
                 const tip = document.createElement('p');
                 tip.innerText = '✨ 长按图片保存到相册 ✨';
-                tip.style.cssText = 'color:#F3EAC3;margin-top:20px;padding:6px 20px;background:#1E1E1C;border-radius:40px';
+                tip.style.cssText = 'color:#F3EAC3;margin-top:20px;padding:6px 20px;background:#1E1E1C;border-radius:40px;font-size:14px;';
+                
                 const closeBtn = document.createElement('button');
                 closeBtn.innerText = '关闭';
-                closeBtn.style.cssText = 'margin-top:20px;background:#D4AF37;border:none;padding:8px 24px;border-radius:60px;font-weight:bold;cursor:pointer';
+                closeBtn.style.cssText = 'margin-top:20px;background:#D4AF37;border:none;padding:8px 32px;border-radius:60px;font-weight:bold;cursor:pointer;font-size:14px;';
                 closeBtn.onclick = () => document.body.removeChild(modal);
+                
                 modal.appendChild(img);
                 modal.appendChild(tip);
                 modal.appendChild(closeBtn);
                 document.body.appendChild(modal);
-            }).catch(() => alert("截图失败"));
+            }).catch(() => {
+                if(exportBtn) exportBtn.style.opacity = '1';
+                alert("截图失败，请重试");
+            });
         }
 
         window.addEventListener('load', () => {
