@@ -23,14 +23,17 @@
             min-height: 100vh;
         }
 
+        /* 最外层卡片容器 —— 宽度控制 + 居中 */
         .oc-card {
-            max-width: 1000px;
             width: 100%;
+            max-width: 560px;        /* 限制最大宽度，更优雅 */
+            margin: 0 auto;          /* 水平居中 */
             background: #FFFFFF;
             border-radius: 2rem;
             box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.12);
             overflow: hidden;
             border: 1px solid #EFECE5;
+            box-sizing: border-box;
         }
 
         .card-inner {
