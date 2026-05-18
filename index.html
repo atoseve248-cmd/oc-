@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>OC工坊 · 白境黑金｜全自定义空表</title>
+    <title>OC工坊 · 白境黑金｜全自定义空表（最终修复版）</title>
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <style>
         * {
@@ -26,8 +26,8 @@
         /* 最外层卡片容器 —— 宽度控制 + 居中 */
         .oc-card {
             width: 100%;
-            max-width: 560px;        /* 限制最大宽度，更优雅 */
-            margin: 0 auto;          /* 水平居中 */
+            max-width: 560px;
+            margin: 0 auto;
             background: #FFFFFF;
             border-radius: 2rem;
             box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.12);
@@ -71,7 +71,7 @@
             padding-left: 10px;
         }
 
-        input, textarea {
+        input, .editable-box {
             width: 100%;
             background: #FEFEFB;
             border: 1px solid #E6E3DB;
@@ -83,14 +83,24 @@
             outline: none;
             transition: 0.2s;
         }
-        textarea {
+        /* 可编辑 div 样式，模拟 textarea */
+        .editable-box {
             resize: none;
-            overflow-y: hidden;
             line-height: 1.45;
+            white-space: pre-wrap;
+            word-break: break-word;
+            min-height: 44px;
+            cursor: text;
         }
-        input:focus, textarea:focus {
+        .editable-box:focus {
             border-color: #D4AF37;
             box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.15);
+        }
+        /* placeholder 效果（当内容为空且未聚焦时显示） */
+        .editable-box:empty:before {
+            content: attr(data-placeholder);
+            color: #9CA3AF;
+            pointer-events: none;
         }
 
         .double-group {
@@ -299,6 +309,7 @@
 <div class="oc-card" id="captureCard">
     <div class="card-inner">
         <div class="split-layout">
+            <!-- 左侧面板 -->
             <div class="left-panel">
                 <div class="section">
                     <div class="section-title">✦ 角色真名</div>
@@ -311,14 +322,15 @@
                 <div class="double-group" style="flex-direction: column; gap: 12px;">
                     <div class="field">
                         <label>❤️ 喜爱</label>
-                        <textarea class="auto-height" rows="1" id="likes" placeholder="喜爱的事物" style="min-height: 44px;"></textarea>
+                        <div class="editable-box" contenteditable="true" data-placeholder="喜爱的事物"></div>
                     </div>
                     <div class="field">
                         <label>💢 厌恶</label>
-                        <textarea class="auto-height" rows="1" id="dislikes" placeholder="厌恶的事物" style="min-height: 44px;"></textarea>
+                        <div class="editable-box" contenteditable="true" data-placeholder="厌恶的事物"></div>
                     </div>
                 </div>
 
+                <!-- 情感依恋 8个选项 -->
                 <div class="section">
                     <div class="section-title">✦ 情感依恋</div>
                     <div class="btn-group" id="loveStyleGroup">
@@ -333,6 +345,7 @@
                     </div>
                 </div>
 
+                <!-- 处世基调 8个选项 -->
                 <div class="section">
                     <div class="section-title">✦ 处世基调</div>
                     <div class="btn-group" id="roleGroup">
@@ -347,6 +360,7 @@
                     </div>
                 </div>
 
+                <!-- 政治光谱 6个 -->
                 <div class="section">
                     <div class="section-title">✦ 政治光谱</div>
                     <div class="btn-group" id="ideologyGroup">
@@ -359,6 +373,7 @@
                     </div>
                 </div>
 
+                <!-- 阵营九宫格 9个 -->
                 <div class="section">
                     <div class="section-title">✦ 阵营九宫格</div>
                     <div class="btn-group" id="alignmentGroup">
@@ -375,6 +390,7 @@
                 </div>
             </div>
 
+            <!-- 右侧面板 -->
             <div class="right-panel">
                 <div class="section">
                     <div class="section-title">✦ 六维棱镜</div>
@@ -384,33 +400,38 @@
                     </div>
                 </div>
 
+                <!-- 双极倾向 -->
                 <div class="section">
                     <div class="section-title">✦ 双极倾向</div>
                     <div id="dualSliderContainer"></div>
                 </div>
 
+                <!-- 性格秤量 -->
                 <div class="section">
                     <div class="section-title">✦ 性格秤量</div>
                     <div id="traitsContainer"></div>
                 </div>
 
+                <!-- 深层秉性 -->
                 <div class="section">
                     <div class="section-title">✦ 深层秉性</div>
                     <div id="fiveTraitsContainer"></div>
                 </div>
 
+                <!-- 外貌描写 -->
                 <div class="textarea-block">
                     <label class="gold-label">外貌描写</label>
-                    <textarea class="auto-height" rows="1" id="appearance" placeholder="发色、瞳色、特征服饰……"></textarea>
+                    <div class="editable-box" contenteditable="true" data-placeholder="发色、瞳色、特征服饰……"></div>
                 </div>
                 <div class="textarea-block">
                     <label class="gold-label">角色经历</label>
-                    <textarea class="auto-height" rows="2" id="backstory" placeholder="过往经历，重要转折……"></textarea>
+                    <div class="editable-box" contenteditable="true" data-placeholder="过往经历，重要转折……"></div>
                 </div>
 
+                <!-- 其他/补充 -->
                 <div class="section">
                     <div class="section-title">✦ 其他·补充</div>
-                    <textarea class="auto-height" rows="2" id="otherNotes" placeholder="口头禅、秘密、信物……"></textarea>
+                    <div class="editable-box" contenteditable="true" data-placeholder="口头禅、秘密、信物……"></div>
                 </div>
             </div>
         </div>
@@ -773,18 +794,6 @@
             });
         }
 
-        function autoResizeAll() {
-            const textareas = document.querySelectorAll('.auto-height');
-            textareas.forEach(ta => {
-                ta.style.height = 'auto';
-                ta.style.height = (ta.scrollHeight) + 'px';
-                ta.addEventListener('input', function() {
-                    this.style.height = 'auto';
-                    this.style.height = (this.scrollHeight) + 'px';
-                });
-            });
-        }
-
         function initButtonGroups() {
             const groups = [
                 { id: 'roleGroup', attr: 'data-role', default: '理想家' },
@@ -804,48 +813,24 @@
             });
         }
 
-        // 修复2：深度重写截图保存机制，全方位适配手机长文本和视口裁切
+        // 最简截图函数：因为现在所有文本框都是 contenteditable div，天然完整可见，无需特殊处理
         function exportCard() {
             const card = document.getElementById('captureCard');
             const exportBtn = document.getElementById('exportBtn');
-            const textareas = card.querySelectorAll('textarea');
+            if (exportBtn) exportBtn.style.opacity = '0';
 
-            // 临时撑开文本框，捕捉完整历史字迹
-            const savedStyles = [];
-            textareas.forEach((ta) => {
-                savedStyles.push({
-                    height: ta.style.height,
-                    overflow: ta.style.overflow
-                });
-                ta.style.height = 'auto';
-                ta.style.height = ta.scrollHeight + 'px';
-                ta.style.overflow = 'visible';
-            });
-
-            if(exportBtn) exportBtn.style.opacity = '0';
-
-            html2canvas(card, { 
-                scale: 2.8, 
+            html2canvas(card, {
+                scale: 2.8,
                 backgroundColor: '#FFFFFF',
                 useCORS: true,
                 allowTaint: true,
-                scrollY: 0, 
-                scrollX: 0,
-                windowWidth: card.scrollWidth,
-                windowHeight: card.scrollHeight
+                logging: false
             }).then(canvas => {
                 const imgData = canvas.toDataURL('image/png');
-                
-                // 瞬间恢复原版网页滚动布局
-                textareas.forEach((ta, index) => {
-                    ta.style.height = savedStyles[index].height;
-                    ta.style.overflow = savedStyles[index].overflow;
-                });
-                if(exportBtn) exportBtn.style.opacity = '1';
+                if (exportBtn) exportBtn.style.opacity = '1';
 
                 const modal = document.createElement('div');
                 modal.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:9999;backdrop-filter:blur(4px);';
-                
                 const img = document.createElement('img');
                 img.src = imgData;
                 img.style.maxWidth = '90%';
@@ -853,22 +838,19 @@
                 img.style.borderRadius = '28px';
                 img.style.border = '2px solid #D4AF37';
                 img.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
-                
                 const tip = document.createElement('p');
                 tip.innerText = '✨ 长按图片保存到相册 ✨';
                 tip.style.cssText = 'color:#F3EAC3;margin-top:20px;padding:6px 20px;background:#1E1E1C;border-radius:40px;font-size:14px;';
-                
                 const closeBtn = document.createElement('button');
                 closeBtn.innerText = '关闭';
                 closeBtn.style.cssText = 'margin-top:20px;background:#D4AF37;border:none;padding:8px 32px;border-radius:60px;font-weight:bold;cursor:pointer;font-size:14px;';
                 closeBtn.onclick = () => document.body.removeChild(modal);
-                
                 modal.appendChild(img);
                 modal.appendChild(tip);
                 modal.appendChild(closeBtn);
                 document.body.appendChild(modal);
-            }).catch(() => {
-                if(exportBtn) exportBtn.style.opacity = '1';
+            }).catch(err => {
+                if (exportBtn) exportBtn.style.opacity = '1';
                 alert("截图失败，请重试");
             });
         }
@@ -884,7 +866,6 @@
             buildTraits();
             buildFiveTraits();
             initButtonGroups();
-            autoResizeAll();
             document.getElementById('exportBtn').addEventListener('click', exportCard);
         });
     })();
