@@ -1,858 +1,858 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
-	<title>OC工坊 · 白境黑金｜全自定义空表</title>
-	<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-	<style>
-		* {
-			margin: 0;
-			padding: 0;
-			box-sizing: border-box;
-			-webkit-tap-highlight-color: transparent;
-		}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+    <title>OC工坊 · 白境黑金｜全自定义空表</title>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
 
-		body {
-			background: #F0EFEA;
-			font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
-			padding: 24px 16px;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			min-height: 100vh;
-		}
+        body {
+            background: #F0EFEA;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
+            padding: 24px 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
 
-		.oc-card {
-			max-width: 1000px;
-			width: 100%;
-			background: #FFFFFF;
-			border-radius: 2rem;
-			box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.12);
-			overflow: hidden;
-			border: 1px solid #EFECE5;
-		}
+        .oc-card {
+            max-width: 1000px;
+            width: 100%;
+            background: #FFFFFF;
+            border-radius: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.12);
+            overflow: hidden;
+            border: 1px solid #EFECE5;
+        }
 
-		.card-inner {
-			padding: 1.8rem 1.6rem;
-		}
+        .card-inner {
+            padding: 1.8rem 1.6rem;
+        }
 
-		.split-layout {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 2rem;
-		}
+        .split-layout {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
 
-		.left-panel {
-			flex: 1.1;
-			min-width: 240px;
-		}
+        .left-panel {
+            flex: 1.1;
+            min-width: 240px;
+        }
 
-		.right-panel {
-			flex: 1.4;
-			min-width: 260px;
-		}
+        .right-panel {
+            flex: 1.4;
+            min-width: 260px;
+        }
 
-		.section {
-			margin-bottom: 1.8rem;
-		}
+        .section {
+            margin-bottom: 1.8rem;
+        }
 
-		.section-title {
-			font-size: 0.75rem;
-			font-weight: 600;
-			letter-spacing: 0.5px;
-			text-transform: uppercase;
-			color: #AA8233;
-			margin-bottom: 0.75rem;
-			border-left: 3px solid #D4AF37;
-			padding-left: 10px;
-		}
+        .section-title {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: #AA8233;
+            margin-bottom: 0.75rem;
+            border-left: 3px solid #D4AF37;
+            padding-left: 10px;
+        }
 
-		input, textarea {
-			width: 100%;
-			background: #FEFEFB;
-			border: 1px solid #E6E3DB;
-			border-radius: 20px;
-			padding: 10px 16px;
-			font-size: 0.85rem;
-			font-family: inherit;
-			color: #1E1E1C;
-			outline: none;
-			transition: 0.2s;
-		}
-		textarea {
-			resize: none;
-			overflow-y: hidden;
-			line-height: 1.45;
-		}
-		input:focus, textarea:focus {
-			border-color: #D4AF37;
-			box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.15);
-		}
+        input, textarea {
+            width: 100%;
+            background: #FEFEFB;
+            border: 1px solid #E6E3DB;
+            border-radius: 20px;
+            padding: 10px 16px;
+            font-size: 0.85rem;
+            font-family: inherit;
+            color: #1E1E1C;
+            outline: none;
+            transition: 0.2s;
+        }
+        textarea {
+            resize: none;
+            overflow-y: hidden;
+            line-height: 1.45;
+        }
+        input:focus, textarea:focus {
+            border-color: #D4AF37;
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.15);
+        }
 
-		.double-group {
-			display: flex;
-			gap: 12px;
-			flex-wrap: wrap;
-			margin-bottom: 1rem;
-		}
-		.double-group .field {
-			flex: 1;
-			min-width: 110px;
-		}
-		.field label {
-			font-size: 0.7rem;
-			display: block;
-			margin-bottom: 5px;
-			color: #77756B;
-			font-weight: 500;
-		}
+        .double-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+        .double-group .field {
+            flex: 1;
+            min-width: 110px;
+        }
+        .field label {
+            font-size: 0.7rem;
+            display: block;
+            margin-bottom: 5px;
+            color: #77756B;
+            font-weight: 500;
+        }
 
-		.btn-group {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 8px;
-			margin: 0.5rem 0 0.2rem 0;
-		}
-		.option-btn {
-			background: #F5F4F0;
-			border: 1px solid #E3DFD7;
-			border-radius: 40px;
-			padding: 6px 14px;
-			font-size: 0.75rem;
-			font-weight: 500;
-			color: #2E2D29;
-			cursor: pointer;
-			transition: all 0.2s;
-			font-family: inherit;
-		}
-		.option-btn.active {
-			background: #D4AF37;
-			border-color: #B48C2C;
-			color: #171716;
-			box-shadow: 0 2px 6px rgba(212, 175, 55, 0.3);
-		}
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 0.5rem 0 0.2rem 0;
+        }
+        .option-btn {
+            background: #F5F4F0;
+            border: 1px solid #E3DFD7;
+            border-radius: 40px;
+            padding: 6px 14px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #2E2D29;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+        .option-btn.active {
+            background: #D4AF37;
+            border-color: #B48C2C;
+            color: #171716;
+            box-shadow: 0 2px 6px rgba(212, 175, 55, 0.3);
+        }
 
-		.radar-area {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			margin-bottom: 0.5rem;
-			cursor: pointer;
-		}
-		canvas {
-			background: #FEFEF9;
-			border-radius: 28px;
-			width: 100%;
-			max-width: 280px;
-			height: auto;
-			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-			border: 1px solid #EFECE5;
-		}
+        .radar-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+        }
+        canvas {
+            background: #FEFEF9;
+            border-radius: 28px;
+            width: 100%;
+            max-width: 280px;
+            height: auto;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+            border: 1px solid #EFECE5;
+        }
 
-		.ellipse-progress {
-			background: #EFEDE6;
-			border-radius: 60px;
-			height: 34px;
-			position: relative;
-			overflow: hidden;
-			cursor: pointer;
-			box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
-			flex: 2;
-		}
-		.ellipse-fill {
-			width: 0%;
-			height: 100%;
-			background: linear-gradient(90deg, #D4AF37, #F0D27A);
-			border-radius: 60px;
-			display: flex;
-			align-items: center;
-			justify-content: flex-end;
-			padding-right: 10px;
-			font-size: 0.7rem;
-			font-weight: 700;
-			color: #1F1F1C;
-			transition: none;
-			pointer-events: none;
-		}
-		.trait-row {
-			display: flex;
-			align-items: center;
-			gap: 12px;
-			margin-bottom: 16px;
-		}
-		.trait-label {
-			width: 58px;
-			font-size: 0.8rem;
-			font-weight: 550;
-			color: #3D3C37;
-		}
-		.trait-value {
-			width: 44px;
-			font-size: 0.75rem;
-			font-weight: 600;
-			color: #B88D2A;
-			text-align: right;
-			user-select: none;
-		}
+        .ellipse-progress {
+            background: #EFEDE6;
+            border-radius: 60px;
+            height: 34px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+            flex: 2;
+        }
+        .ellipse-fill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #D4AF37, #F0D27A);
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #1F1F1C;
+            transition: none;
+            pointer-events: none;
+        }
+        .trait-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .trait-label {
+            width: 58px;
+            font-size: 0.8rem;
+            font-weight: 550;
+            color: #3D3C37;
+        }
+        .trait-value {
+            width: 44px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #B88D2A;
+            text-align: right;
+            user-select: none;
+        }
 
-		/* 双极倾向横线滑块 */
-		.dual-slider-container {
-			margin-bottom: 20px;
-		}
-		.dual-header {
-			display: flex;
-			justify-content: space-between;
-			font-size: 0.75rem;
-			font-weight: 500;
-			color: #9A7D34;
-			margin-bottom: 8px;
-			padding: 0 6px;
-		}
-		.slider-track {
-			position: relative;
-			width: 100%;
-			height: 2px;
-			background: #D9D4C8;
-			border-radius: 2px;
-			margin: 12px 0 6px;
-			cursor: pointer;
-		}
-		.slider-thumb {
-			position: absolute;
-			width: 20px;
-			height: 20px;
-			background: #D4AF37;
-			border-radius: 50%;
-			top: 50%;
-			transform: translate(-50%, -50%);
-			left: 50%;
-			box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-			cursor: grab;
-			transition: left 0.05s linear;
-			z-index: 2;
-		}
-		.slider-thumb:active {
-			cursor: grabbing;
-		}
-		.dual-labels {
-			display: flex;
-			justify-content: space-between;
-			padding: 0 6px;
-			font-size: 0.7rem;
-			color: #A58E48;
-			font-weight: 500;
-		}
-		.gold-label {
-			font-size: 0.75rem;
-			font-weight: 600;
-			color: #AA8233;
-			display: block;
-			margin-bottom: 6px;
-		}
-		.export-btn {
-			background: #1E1E1C;
-			border: none;
-			border-radius: 44px;
-			padding: 12px 18px;
-			font-weight: 600;
-			color: #F7F6F0;
-			font-size: 0.9rem;
-			width: 100%;
-			cursor: pointer;
-			transition: 0.2s;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			gap: 8px;
-			margin-top: 24px;
-			font-family: inherit;
-		}
-		.export-btn:hover {
-			background: #D4AF37;
-			color: #181817;
-		}
-		.note-small {
-			font-size: 0.65rem;
-			text-align: center;
-			color: #BCB8AD;
-			margin-top: 12px;
-		}
-		@media (max-width: 680px) {
-			.card-inner {
-				padding: 1.2rem;
-			}
-			.split-layout {
-				flex-direction: column;
-				gap: 1.2rem;
-			}
-			.trait-label {
-				width: 52px;
-			}
-		}
-	</style>
+        /* 双极倾向横线滑块 */
+        .dual-slider-container {
+            margin-bottom: 20px;
+        }
+        .dual-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #9A7D34;
+            margin-bottom: 8px;
+            padding: 0 6px;
+        }
+        .slider-track {
+            position: relative;
+            width: 100%;
+            height: 2px;
+            background: #D9D4C8;
+            border-radius: 2px;
+            margin: 12px 0 6px;
+            cursor: pointer;
+        }
+        .slider-thumb {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #D4AF37;
+            border-radius: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            left: 50%;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            cursor: grab;
+            transition: left 0.05s linear;
+            z-index: 2;
+        }
+        .slider-thumb:active {
+            cursor: grabbing;
+        }
+        .dual-labels {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 6px;
+            font-size: 0.7rem;
+            color: #A58E48;
+            font-weight: 500;
+        }
+        .gold-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #AA8233;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .export-btn {
+            background: #1E1E1C;
+            border: none;
+            border-radius: 44px;
+            padding: 12px 18px;
+            font-weight: 600;
+            color: #F7F6F0;
+            font-size: 0.9rem;
+            width: 100%;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 24px;
+            font-family: inherit;
+        }
+        .export-btn:hover {
+            background: #D4AF37;
+            color: #181817;
+        }
+        .note-small {
+            font-size: 0.65rem;
+            text-align: center;
+            color: #BCB8AD;
+            margin-top: 12px;
+        }
+        @media (max-width: 680px) {
+            .card-inner {
+                padding: 1.2rem;
+            }
+            .split-layout {
+                flex-direction: column;
+                gap: 1.2rem;
+            }
+            .trait-label {
+                width: 52px;
+            }
+        }
+    </style>
 </head>
 <body>
 <div class="oc-card" id="captureCard">
-	<div class="card-inner">
-		<div class="split-layout">
-			<!-- 左侧面板 -->
-			<div class="left-panel">
-				<div class="section">
-					<div class="section-title">✦ 角色真名</div>
-					<input type="text" id="nickname" placeholder="例如：洛瑟琳·梵铎" value="">
-				</div>
-				<div class="double-group">
-					<div class="field"><label>性别</label><input type="text" id="gender" placeholder="自定义" value=""></div>
-					<div class="field"><label>性向</label><input type="text" id="orientation" placeholder="性向" value=""></div>
-				</div>
-				<div class="double-group" style="flex-direction: column; gap: 12px;">
-					<div class="field">
-						<label>❤️ 喜爱</label>
-						<textarea class="auto-height" rows="1" id="likes" placeholder="喜爱的事物" style="min-height: 44px;"></textarea>
-					</div>
-					<div class="field">
-						<label>💢 厌恶</label>
-						<textarea class="auto-height" rows="1" id="dislikes" placeholder="厌恶的事物" style="min-height: 44px;"></textarea>
-					</div>
-				</div>
+    <div class="card-inner">
+        <div class="split-layout">
+            <!-- 左侧面板 -->
+            <div class="left-panel">
+                <div class="section">
+                    <div class="section-title">✦ 角色真名</div>
+                    <input type="text" id="nickname" placeholder="例如：洛瑟琳·梵铎" value="">
+                </div>
+                <div class="double-group">
+                    <div class="field"><label>性别</label><input type="text" id="gender" placeholder="自定义" value=""></div>
+                    <div class="field"><label>性向</label><input type="text" id="orientation" placeholder="性向" value=""></div>
+                </div>
+                <div class="double-group" style="flex-direction: column; gap: 12px;">
+                    <div class="field">
+                        <label>❤️ 喜爱</label>
+                        <textarea class="auto-height" rows="1" id="likes" placeholder="喜爱的事物" style="min-height: 44px;"></textarea>
+                    </div>
+                    <div class="field">
+                        <label>💢 厌恶</label>
+                        <textarea class="auto-height" rows="1" id="dislikes" placeholder="厌恶的事物" style="min-height: 44px;"></textarea>
+                    </div>
+                </div>
 
-				<!-- 情感依恋 8个选项 -->
-				<div class="section">
-					<div class="section-title">✦ 情感依恋</div>
-					<div class="btn-group" id="loveStyleGroup">
-						<button data-love="支配型" class="option-btn">支配型</button>
-						<button data-love="依赖型" class="option-btn">依赖型</button>
-						<button data-love="回避型" class="option-btn">回避型</button>
-						<button data-love="献身型" class="option-btn">献身型</button>
-						<button data-love="观察型" class="option-btn">观察型</button>
-						<button data-love="共犯型" class="option-btn">共犯型</button>
-						<button data-love="疏离型" class="option-btn">疏离型</button>
-						<button data-love="共生型" class="option-btn">共生型</button>
-					</div>
-				</div>
+                <!-- 情感依恋 8个选项 -->
+                <div class="section">
+                    <div class="section-title">✦ 情感依恋</div>
+                    <div class="btn-group" id="loveStyleGroup">
+                        <button data-love="支配型" class="option-btn">支配型</button>
+                        <button data-love="依赖型" class="option-btn">依赖型</button>
+                        <button data-love="回避型" class="option-btn">回避型</button>
+                        <button data-love="献身型" class="option-btn">献身型</button>
+                        <button data-love="观察型" class="option-btn">观察型</button>
+                        <button data-love="共犯型" class="option-btn">共犯型</button>
+                        <button data-love="疏离型" class="option-btn">疏离型</button>
+                        <button data-love="共生型" class="option-btn">共生型</button>
+                    </div>
+                </div>
 
-				<!-- 处世基调 8个选项 -->
-				<div class="section">
-					<div class="section-title">✦ 处世基调</div>
-					<div class="btn-group" id="roleGroup">
-						<button data-role="革命家" class="option-btn">革命家</button>
-						<button data-role="理想家" class="option-btn">理想家</button>
-						<button data-role="野心家" class="option-btn">野心家</button>
-						<button data-role="实干家" class="option-btn">实干家</button>
-						<button data-role="阴谋家" class="option-btn">阴谋家</button>
-						<button data-role="韬略家" class="option-btn">韬略家</button>
-						<button data-role="隐士型" class="option-btn">隐士型</button>
-						<button data-role="游荡者" class="option-btn">游荡者</button>
-					</div>
-				</div>
+                <!-- 处世基调 8个选项 -->
+                <div class="section">
+                    <div class="section-title">✦ 处世基调</div>
+                    <div class="btn-group" id="roleGroup">
+                        <button data-role="革命家" class="option-btn">革命家</button>
+                        <button data-role="理想家" class="option-btn">理想家</button>
+                        <button data-role="野心家" class="option-btn">野心家</button>
+                        <button data-role="实干家" class="option-btn">实干家</button>
+                        <button data-role="阴谋家" class="option-btn">阴谋家</button>
+                        <button data-role="韬略家" class="option-btn">韬略家</button>
+                        <button data-role="隐士型" class="option-btn">隐士型</button>
+                        <button data-role="游荡者" class="option-btn">游荡者</button>
+                    </div>
+                </div>
 
-				<!-- 政治光谱 6个 -->
-				<div class="section">
-					<div class="section-title">✦ 政治光谱</div>
-					<div class="btn-group" id="ideologyGroup">
-						<button data-ide="共和主义" class="option-btn">共和主义</button>
-						<button data-ide="自由主义" class="option-btn">自由主义</button>
-						<button data-ide="保守主义" class="option-btn">保守主义</button>
-						<button data-ide="理想主义" class="option-btn">理想主义</button>
-						<button data-ide="实用主义" class="option-btn">实用主义</button>
-						<button data-ide="社群主义" class="option-btn">社群主义</button>
-					</div>
-				</div>
+                <!-- 政治光谱 6个 -->
+                <div class="section">
+                    <div class="section-title">✦ 政治光谱</div>
+                    <div class="btn-group" id="ideologyGroup">
+                        <button data-ide="共和主义" class="option-btn">共和主义</button>
+                        <button data-ide="自由主义" class="option-btn">自由主义</button>
+                        <button data-ide="保守主义" class="option-btn">保守主义</button>
+                        <button data-ide="理想主义" class="option-btn">理想主义</button>
+                        <button data-ide="实用主义" class="option-btn">实用主义</button>
+                        <button data-ide="社群主义" class="option-btn">社群主义</button>
+                    </div>
+                </div>
 
-				<!-- 阵营九宫格 9个 -->
-				<div class="section">
-					<div class="section-title">✦ 阵营九宫格</div>
-					<div class="btn-group" id="alignmentGroup">
-						<button data-align="守序善良" class="option-btn">守序善良</button>
-						<button data-align="中立善良" class="option-btn">中立善良</button>
-						<button data-align="混沌善良" class="option-btn">混沌善良</button>
-						<button data-align="守序中立" class="option-btn">守序中立</button>
-						<button data-align="绝对中立" class="option-btn">绝对中立</button>
-						<button data-align="混沌中立" class="option-btn">混沌中立</button>
-						<button data-align="守序邪恶" class="option-btn">守序邪恶</button>
-						<button data-align="中立邪恶" class="option-btn">中立邪恶</button>
-						<button data-align="混沌邪恶" class="option-btn">混沌邪恶</button>
-					</div>
-				</div>
-			</div>
+                <!-- 阵营九宫格 9个 -->
+                <div class="section">
+                    <div class="section-title">✦ 阵营九宫格</div>
+                    <div class="btn-group" id="alignmentGroup">
+                        <button data-align="守序善良" class="option-btn">守序善良</button>
+                        <button data-align="中立善良" class="option-btn">中立善良</button>
+                        <button data-align="混沌善良" class="option-btn">混沌善良</button>
+                        <button data-align="守序中立" class="option-btn">守序中立</button>
+                        <button data-align="绝对中立" class="option-btn">绝对中立</button>
+                        <button data-align="混沌中立" class="option-btn">混沌中立</button>
+                        <button data-align="守序邪恶" class="option-btn">守序邪恶</button>
+                        <button data-align="中立邪恶" class="option-btn">中立邪恶</button>
+                        <button data-align="混沌邪恶" class="option-btn">混沌邪恶</button>
+                    </div>
+                </div>
+            </div>
 
-			<!-- 右侧面板 -->
-			<div class="right-panel">
-				<div class="section">
-					<div class="section-title">✦ 六维棱镜</div>
-					<div class="radar-area">
-						<canvas id="radarCanvas" width="500" height="500" style="width:100%; max-width:280px; height:auto; aspect-ratio:1/1"></canvas>
-						<div class="note-small" style="margin-top:6px;">👆 直接拖拽顶点调节数值</div>
-					</div>
-				</div>
+            <!-- 右侧面板 -->
+            <div class="right-panel">
+                <div class="section">
+                    <div class="section-title">✦ 六维棱镜</div>
+                    <div class="radar-area">
+                        <canvas id="radarCanvas" width="500" height="500" style="width:100%; max-width:280px; height:auto; aspect-ratio:1/1"></canvas>
+                        <div class="note-small" style="margin-top:6px;">👆 直接拖拽顶点调节数值</div>
+                    </div>
+                </div>
 
-				<!-- 双极倾向 -->
-				<div class="section">
-					<div class="section-title">✦ 双极倾向</div>
-					<div id="dualSliderContainer"></div>
-				</div>
+                <!-- 双极倾向 -->
+                <div class="section">
+                    <div class="section-title">✦ 双极倾向</div>
+                    <div id="dualSliderContainer"></div>
+                </div>
 
-				<!-- 性格秤量 -->
-				<div class="section">
-					<div class="section-title">✦ 性格秤量</div>
-					<div id="traitsContainer"></div>
-				</div>
+                <!-- 性格秤量 -->
+                <div class="section">
+                    <div class="section-title">✦ 性格秤量</div>
+                    <div id="traitsContainer"></div>
+                </div>
 
-				<!-- 深层秉性 -->
-				<div class="section">
-					<div class="section-title">✦ 深层秉性</div>
-					<div id="fiveTraitsContainer"></div>
-				</div>
+                <!-- 深层秉性 -->
+                <div class="section">
+                    <div class="section-title">✦ 深层秉性</div>
+                    <div id="fiveTraitsContainer"></div>
+                </div>
 
-				<!-- 外貌描写 无预设 -->
-				<div class="textarea-block">
-					<label class="gold-label">外貌描写</label>
-					<textarea class="auto-height" rows="1" id="appearance" placeholder="发色、瞳色、特征服饰……"></textarea>
-				</div>
-				<div class="textarea-block">
-					<label class="gold-label">角色经历</label>
-					<textarea class="auto-height" rows="2" id="backstory" placeholder="过往经历，重要转折……"></textarea>
-				</div>
+                <!-- 外貌描写 无预设 -->
+                <div class="textarea-block">
+                    <label class="gold-label">外貌描写</label>
+                    <textarea class="auto-height" rows="1" id="appearance" placeholder="发色、瞳色、特征服饰……"></textarea>
+                </div>
+                <div class="textarea-block">
+                    <label class="gold-label">角色经历</label>
+                    <textarea class="auto-height" rows="2" id="backstory" placeholder="过往经历，重要转折……"></textarea>
+                </div>
 
-				<!-- 其他/补充 -->
-				<div class="section">
-					<div class="section-title">✦ 其他·补充</div>
-					<textarea class="auto-height" rows="2" id="otherNotes" placeholder="口头禅、秘密、信物……"></textarea>
-				</div>
-			</div>
-		</div>
-		<button class="export-btn" id="exportBtn">⬇ 截取卡片 · 保存至相册</button>
-		<div class="note-small">点击导出生成高清图，长按图片即可保存至相册</div>
-	</div>
+                <!-- 其他/补充 -->
+                <div class="section">
+                    <div class="section-title">✦ 其他·补充</div>
+                    <textarea class="auto-height" rows="2" id="otherNotes" placeholder="口头禅、秘密、信物……"></textarea>
+                </div>
+            </div>
+        </div>
+        <button class="export-btn" id="exportBtn">⬇ 截取卡片 · 保存至相册</button>
+        <div class="note-small">点击导出生成高清图，长按图片即可保存至相册</div>
+    </div>
 </div>
 
 <script>
-	(function(){
-		// ========== 六维雷达 ==========
-		const STAT_KEYS = ["武力", "智谋", "社交", "意志", "共情", "欲望"];
-		let statValues = [78, 65, 70, 82, 60, 55];
-		let radarCanvas, ctx;
-		let draggingVertex = -1;
-		let verticesPos = [];
+    (function(){
+        // ========== 六维雷达 ==========
+        const STAT_KEYS = ["武力", "智谋", "社交", "意志", "共情", "欲望"];
+        let statValues = [78, 65, 70, 82, 60, 55];
+        let radarCanvas, ctx;
+        let draggingVertex = -1;
+        let verticesPos = [];
 
-		function drawRadarChart() {
-			if (!ctx) return;
-			const w = radarCanvas.width, h = radarCanvas.height;
-			ctx.clearRect(0, 0, w, h);
-			const centerX = w/2, centerY = h/2;
-			const radius = Math.min(w, h) * 0.36;
-			const angles = [30, 90, 150, 210, 270, 330].map(deg => deg * Math.PI / 180);
-			
-			const levels = 5;
-			for (let i = 1; i <= levels; i++) {
-				const r = (radius / levels) * i;
-				ctx.beginPath();
-				for (let j = 0; j < angles.length; j++) {
-					const x = centerX + r * Math.cos(angles[j]);
-					const y = centerY + r * Math.sin(angles[j]);
-					if (j === 0) ctx.moveTo(x, y);
-					else ctx.lineTo(x, y);
-				}
-				ctx.closePath();
-				ctx.strokeStyle = "#E1DDD3";
-				ctx.lineWidth = 0.6;
-				ctx.stroke();
-				ctx.fillStyle = "#FEFCF8";
-				ctx.fill();
-			}
-			for (let i = 0; i < angles.length; i++) {
-				const xEnd = centerX + radius * Math.cos(angles[i]);
-				const yEnd = centerY + radius * Math.sin(angles[i]);
-				ctx.beginPath();
-				ctx.moveTo(centerX, centerY);
-				ctx.lineTo(xEnd, yEnd);
-				ctx.strokeStyle = "#D3CFC3";
-				ctx.lineWidth = 0.7;
-				ctx.stroke();
-				
-				const labelX = centerX + (radius + 26) * Math.cos(angles[i]);
-				const labelY = centerY + (radius + 20) * Math.sin(angles[i]);
-				ctx.font = "bold 16px 'Inter', system-ui";
-				ctx.fillStyle = "#AA8233";
-				ctx.fillText(STAT_KEYS[i], labelX - 14, labelY - 6);
-			}
-			let points = [];
-			for (let i = 0; i < angles.length; i++) {
-				let percent = statValues[i] / 100;
-				let rData = radius * percent;
-				let x = centerX + rData * Math.cos(angles[i]);
-				let y = centerY + rData * Math.sin(angles[i]);
-				points.push({x, y});
-			}
-			verticesPos = points;
-			ctx.beginPath();
-			points.forEach((p, idx) => {
-				if (idx === 0) ctx.moveTo(p.x, p.y);
-				else ctx.lineTo(p.x, p.y);
-			});
-			ctx.closePath();
-			ctx.fillStyle = "rgba(212, 175, 55, 0.2)";
-			ctx.fill();
-			ctx.strokeStyle = "#D4AF37";
-			ctx.lineWidth = 2.2;
-			ctx.stroke();
-			points.forEach((p) => {
-				ctx.beginPath();
-				ctx.arc(p.x, p.y, 7, 0, 2*Math.PI);
-				ctx.fillStyle = "#D4AF37";
-				ctx.fill();
-				ctx.beginPath();
-				ctx.arc(p.x, p.y, 3, 0, 2*Math.PI);
-				ctx.fillStyle = "#FFFFFF";
-				ctx.fill();
-			});
-		}
+        function drawRadarChart() {
+            if (!ctx) return;
+            const w = radarCanvas.width, h = radarCanvas.height;
+            ctx.clearRect(0, 0, w, h);
+            const centerX = w/2, centerY = h/2;
+            const radius = Math.min(w, h) * 0.36;
+            const angles = [30, 90, 150, 210, 270, 330].map(deg => deg * Math.PI / 180);
+            
+            const levels = 5;
+            for (let i = 1; i <= levels; i++) {
+                const r = (radius / levels) * i;
+                ctx.beginPath();
+                for (let j = 0; j < angles.length; j++) {
+                    const x = centerX + r * Math.cos(angles[j]);
+                    const y = centerY + r * Math.sin(angles[j]);
+                    if (j === 0) ctx.moveTo(x, y);
+                    else ctx.lineTo(x, y);
+                }
+                ctx.closePath();
+                ctx.strokeStyle = "#E1DDD3";
+                ctx.lineWidth = 0.6;
+                ctx.stroke();
+                ctx.fillStyle = "#FEFCF8";
+                ctx.fill();
+            }
+            for (let i = 0; i < angles.length; i++) {
+                const xEnd = centerX + radius * Math.cos(angles[i]);
+                const yEnd = centerY + radius * Math.sin(angles[i]);
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.lineTo(xEnd, yEnd);
+                ctx.strokeStyle = "#D3CFC3";
+                ctx.lineWidth = 0.7;
+                ctx.stroke();
+                
+                const labelX = centerX + (radius + 26) * Math.cos(angles[i]);
+                const labelY = centerY + (radius + 20) * Math.sin(angles[i]);
+                ctx.font = "bold 16px 'Inter', system-ui";
+                ctx.fillStyle = "#AA8233";
+                ctx.fillText(STAT_KEYS[i], labelX - 14, labelY - 6);
+            }
+            let points = [];
+            for (let i = 0; i < angles.length; i++) {
+                let percent = statValues[i] / 100;
+                let rData = radius * percent;
+                let x = centerX + rData * Math.cos(angles[i]);
+                let y = centerY + rData * Math.sin(angles[i]);
+                points.push({x, y});
+            }
+            verticesPos = points;
+            ctx.beginPath();
+            points.forEach((p, idx) => {
+                if (idx === 0) ctx.moveTo(p.x, p.y);
+                else ctx.lineTo(p.x, p.y);
+            });
+            ctx.closePath();
+            ctx.fillStyle = "rgba(212, 175, 55, 0.2)";
+            ctx.fill();
+            ctx.strokeStyle = "#D4AF37";
+            ctx.lineWidth = 2.2;
+            ctx.stroke();
+            points.forEach((p) => {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, 7, 0, 2*Math.PI);
+                ctx.fillStyle = "#D4AF37";
+                ctx.fill();
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, 3, 0, 2*Math.PI);
+                ctx.fillStyle = "#FFFFFF";
+                ctx.fill();
+            });
+        }
 
-		function getMouseCoord(e, canvas) {
-			const rect = canvas.getBoundingClientRect();
-			const scaleX = canvas.width / rect.width;
-			const scaleY = canvas.height / rect.height;
-			let clientX, clientY;
-			if (e.touches) {
-				clientX = e.touches[0].clientX;
-				clientY = e.touches[0].clientY;
-			} else {
-				clientX = e.clientX;
-				clientY = e.clientY;
-			}
-			let canvasX = (clientX - rect.left) * scaleX;
-			let canvasY = (clientY - rect.top) * scaleY;
-			canvasX = Math.min(canvas.width, Math.max(0, canvasX));
-			canvasY = Math.min(canvas.height, Math.max(0, canvasY));
-			return { x: canvasX, y: canvasY };
-		}
+        function getMouseCoord(e, canvas) {
+            const rect = canvas.getBoundingClientRect();
+            const scaleX = canvas.width / rect.width;
+            const scaleY = canvas.height / rect.height;
+            let clientX, clientY;
+            if (e.touches) {
+                clientX = e.touches[0].clientX;
+                clientY = e.touches[0].clientY;
+            } else {
+                clientX = e.clientX;
+                clientY = e.clientY;
+            }
+            let canvasX = (clientX - rect.left) * scaleX;
+            let canvasY = (clientY - rect.top) * scaleY;
+            canvasX = Math.min(canvas.width, Math.max(0, canvasX));
+            canvasY = Math.min(canvas.height, Math.max(0, canvasY));
+            return { x: canvasX, y: canvasY };
+        }
 
-		function findNearestVertex(px, py, threshold=18) {
-			let minDist = threshold, index = -1;
-			for (let i=0; i<verticesPos.length; i++) {
-				const dx = verticesPos[i].x - px;
-				const dy = verticesPos[i].y - py;
-				const dist = Math.hypot(dx, dy);
-				if (dist < minDist) {
-					minDist = dist;
-					index = i;
-				}
-			}
-			return index;
-		}
+        function findNearestVertex(px, py, threshold=18) {
+            let minDist = threshold, index = -1;
+            for (let i=0; i<verticesPos.length; i++) {
+                const dx = verticesPos[i].x - px;
+                const dy = verticesPos[i].y - py;
+                const dist = Math.hypot(dx, dy);
+                if (dist < minDist) {
+                    minDist = dist;
+                    index = i;
+                }
+            }
+            return index;
+        }
 
-		function updateStatFromVertex(vertexIdx, canvasX, canvasY) {
-			const w = radarCanvas.width, h = radarCanvas.height;
-			const centerX = w/2, centerY = h/2;
-			const dx = canvasX - centerX;
-			const dy = canvasY - centerY;
-			const maxR = Math.min(w, h) * 0.36;
-			let rad = Math.hypot(dx, dy);
-			rad = Math.min(maxR, Math.max(0, rad));
-			let percent = rad / maxR;
-			let newVal = Math.round(percent * 100);
-			newVal = Math.min(100, Math.max(0, newVal));
-			if (statValues[vertexIdx] !== newVal) {
-				statValues[vertexIdx] = newVal;
-				drawRadarChart();
-			}
-		}
+        function updateStatFromVertex(vertexIdx, canvasX, canvasY) {
+            const w = radarCanvas.width, h = radarCanvas.height;
+            const centerX = w/2, centerY = h/2;
+            const dx = canvasX - centerX;
+            const dy = canvasY - centerY;
+            const maxR = Math.min(w, h) * 0.36;
+            let rad = Math.hypot(dx, dy);
+            rad = Math.min(maxR, Math.max(0, rad));
+            let percent = rad / maxR;
+            let newVal = Math.round(percent * 100);
+            newVal = Math.min(100, Math.max(0, newVal));
+            if (statValues[vertexIdx] !== newVal) {
+                statValues[vertexIdx] = newVal;
+                drawRadarChart();
+            }
+        }
 
-		function attachDragEvents() {
-			const canvas = radarCanvas;
-			let dragActive = false;
-			let currentVertex = -1;
-			const startDrag = (e) => {
-				e.preventDefault();
-				const { x, y } = getMouseCoord(e, canvas);
-				const vertex = findNearestVertex(x, y, 20);
-				if (vertex !== -1) {
-					dragActive = true;
-					currentVertex = vertex;
-					updateStatFromVertex(currentVertex, x, y);
-				}
-			};
-			const onDrag = (e) => {
-				if (!dragActive || currentVertex === -1) return;
-				e.preventDefault();
-				const { x, y } = getMouseCoord(e, canvas);
-				updateStatFromVertex(currentVertex, x, y);
-			};
-			const endDrag = () => {
-				dragActive = false;
-				currentVertex = -1;
-			};
-			canvas.addEventListener('mousedown', startDrag);
-			window.addEventListener('mousemove', onDrag);
-			window.addEventListener('mouseup', endDrag);
-			canvas.addEventListener('touchstart', startDrag);
-			window.addEventListener('touchmove', onDrag);
-			window.addEventListener('touchend', endDrag);
-		}
+        function attachDragEvents() {
+            const canvas = radarCanvas;
+            let dragActive = false;
+            let currentVertex = -1;
+            const startDrag = (e) => {
+                e.preventDefault();
+                const { x, y } = getMouseCoord(e, canvas);
+                const vertex = findNearestVertex(x, y, 20);
+                if (vertex !== -1) {
+                    dragActive = true;
+                    currentVertex = vertex;
+                    updateStatFromVertex(currentVertex, x, y);
+                }
+            };
+            const onDrag = (e) => {
+                if (!dragActive || currentVertex === -1) return;
+                e.preventDefault();
+                const { x, y } = getMouseCoord(e, canvas);
+                updateStatFromVertex(currentVertex, x, y);
+            };
+            const endDrag = () => {
+                dragActive = false;
+                currentVertex = -1;
+            };
+            canvas.addEventListener('mousedown', startDrag);
+            window.addEventListener('mousemove', onDrag);
+            window.addEventListener('mouseup', endDrag);
+            canvas.addEventListener('touchstart', startDrag);
+            window.addEventListener('touchmove', onDrag);
+            window.addEventListener('touchend', endDrag);
+        }
 
-		// 双极倾向横线滑块
-		function buildDualSliders() {
-			const container = document.getElementById('dualSliderContainer');
-			container.innerHTML = '';
-			const items = [
-				{ left: "国家", right: "自我", initial: 50 },
-				{ left: "理想", right: "现实", initial: 50 }
-			];
-			items.forEach((item) => {
-				const wrapper = document.createElement('div');
-				wrapper.className = 'dual-slider-container';
-				const header = document.createElement('div');
-				header.className = 'dual-header';
-				header.innerHTML = `<span>${item.left}</span><span>${item.right}</span>`;
-				const trackDiv = document.createElement('div');
-				trackDiv.className = 'slider-track';
-				const thumb = document.createElement('div');
-				thumb.className = 'slider-thumb';
-				let currentLeftPercent = item.initial;
-				thumb.style.left = currentLeftPercent + '%';
-				trackDiv.appendChild(thumb);
-				const labelsDiv = document.createElement('div');
-				labelsDiv.className = 'dual-labels';
-				labelsDiv.innerHTML = `<span>${item.left}</span><span>${item.right}</span>`;
-				
-				let isDragging = false;
-				const updatePosition = (clientX) => {
-					const rect = trackDiv.getBoundingClientRect();
-					let ratio = (clientX - rect.left) / rect.width;
-					ratio = Math.min(1, Math.max(0, ratio));
-					const percent = ratio * 100;
-					currentLeftPercent = percent;
-					thumb.style.left = percent + '%';
-				};
-				const onStart = (e) => {
-					isDragging = true;
-					let clientX = e.touches ? e.touches[0].clientX : e.clientX;
-					if (clientX) updatePosition(clientX);
-					e.preventDefault();
-				};
-				const onMove = (e) => {
-					if (!isDragging) return;
-					let clientX = e.touches ? e.touches[0].clientX : e.clientX;
-					if (clientX) updatePosition(clientX);
-					e.preventDefault();
-				};
-				const onEnd = () => { isDragging = false; };
-				thumb.addEventListener('mousedown', onStart);
-				window.addEventListener('mousemove', onMove);
-				window.addEventListener('mouseup', onEnd);
-				thumb.addEventListener('touchstart', onStart);
-				window.addEventListener('touchmove', onMove);
-				window.addEventListener('touchend', onEnd);
-				trackDiv.addEventListener('click', (e) => {
-					let clientX = e.clientX;
-					if (clientX) updatePosition(clientX);
-				});
-				wrapper.appendChild(header);
-				wrapper.appendChild(trackDiv);
-				wrapper.appendChild(labelsDiv);
-				container.appendChild(wrapper);
-			});
-		}
+        // 双极倾向横线滑块
+        function buildDualSliders() {
+            const container = document.getElementById('dualSliderContainer');
+            container.innerHTML = '';
+            const items = [
+                { left: "国家", right: "自我", initial: 50 },
+                { left: "理想", right: "现实", initial: 50 }
+            ];
+            items.forEach((item) => {
+                const wrapper = document.createElement('div');
+                wrapper.className = 'dual-slider-container';
+                const header = document.createElement('div');
+                header.className = 'dual-header';
+                header.innerHTML = `<span>${item.left}</span><span>${item.right}</span>`;
+                const trackDiv = document.createElement('div');
+                trackDiv.className = 'slider-track';
+                const thumb = document.createElement('div');
+                thumb.className = 'slider-thumb';
+                let currentLeftPercent = item.initial;
+                thumb.style.left = currentLeftPercent + '%';
+                trackDiv.appendChild(thumb);
+                const labelsDiv = document.createElement('div');
+                labelsDiv.className = 'dual-labels';
+                labelsDiv.innerHTML = `<span>${item.left}</span><span>${item.right}</span>`;
+                
+                let isDragging = false;
+                const updatePosition = (clientX) => {
+                    const rect = trackDiv.getBoundingClientRect();
+                    let ratio = (clientX - rect.left) / rect.width;
+                    ratio = Math.min(1, Math.max(0, ratio));
+                    const percent = ratio * 100;
+                    currentLeftPercent = percent;
+                    thumb.style.left = percent + '%';
+                };
+                const onStart = (e) => {
+                    isDragging = true;
+                    let clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                    if (clientX) updatePosition(clientX);
+                    e.preventDefault();
+                };
+                const onMove = (e) => {
+                    if (!isDragging) return;
+                    let clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                    if (clientX) updatePosition(clientX);
+                    e.preventDefault();
+                };
+                const onEnd = () => { isDragging = false; };
+                thumb.addEventListener('mousedown', onStart);
+                window.addEventListener('mousemove', onMove);
+                window.addEventListener('mouseup', onEnd);
+                thumb.addEventListener('touchstart', onStart);
+                window.addEventListener('touchmove', onMove);
+                window.addEventListener('touchend', onEnd);
+                trackDiv.addEventListener('click', (e) => {
+                    let clientX = e.clientX;
+                    if (clientX) updatePosition(clientX);
+                });
+                wrapper.appendChild(header);
+                wrapper.appendChild(trackDiv);
+                wrapper.appendChild(labelsDiv);
+                container.appendChild(wrapper);
+            });
+        }
 
-		// 性格椭圆条
-		const TRAIT_KEYS = ["外向", "内敛", "理性", "感性", "执拗"];
-		let traitValues = [72, 38, 80, 44, 63];
-		function buildTraits() {
-			const container = document.getElementById('traitsContainer');
-			container.innerHTML = '';
-			TRAIT_KEYS.forEach((name, idx) => {
-				const row = document.createElement('div');
-				row.className = 'trait-row';
-				const label = document.createElement('span');
-				label.className = 'trait-label';
-				label.textContent = name;
-				const ellipseWrap = document.createElement('div');
-				ellipseWrap.className = 'ellipse-progress';
-				const fill = document.createElement('div');
-				fill.className = 'ellipse-fill';
-				fill.style.width = traitValues[idx] + '%';
-				fill.textContent = traitValues[idx] + '%';
-				ellipseWrap.appendChild(fill);
-				const valSpan = document.createElement('span');
-				valSpan.className = 'trait-value';
-				valSpan.textContent = traitValues[idx] + '%';
-				const setVal = (newVal) => {
-					newVal = Math.min(100, Math.max(0, newVal));
-					traitValues[idx] = newVal;
-					fill.style.width = newVal + '%';
-					fill.textContent = newVal + '%';
-					valSpan.textContent = newVal + '%';
-				};
-				let dragging = false;
-				const handleMove = (clientX) => {
-					const rect = ellipseWrap.getBoundingClientRect();
-					let x = clientX - rect.left;
-					x = Math.min(rect.width, Math.max(0, x));
-					let percent = (x / rect.width) * 100;
-					setVal(Math.round(percent));
-				};
-				const onStart = (e) => {
-					dragging = true;
-					let cx = e.touches ? e.touches[0].clientX : e.clientX;
-					if (cx) handleMove(cx);
-					e.preventDefault();
-				};
-				const onMove = (e) => {
-					if (!dragging) return;
-					let cx = e.touches ? e.touches[0].clientX : e.clientX;
-					if (cx) handleMove(cx);
-				};
-				const onEnd = () => { dragging = false; };
-				ellipseWrap.addEventListener('mousedown', onStart);
-				window.addEventListener('mousemove', onMove);
-				window.addEventListener('mouseup', onEnd);
-				ellipseWrap.addEventListener('touchstart', onStart);
-				window.addEventListener('touchmove', onMove);
-				window.addEventListener('touchend', onEnd);
-				ellipseWrap.addEventListener('click', (e) => { if(e.clientX) handleMove(e.clientX); });
-				row.appendChild(label);
-				row.appendChild(ellipseWrap);
-				row.appendChild(valSpan);
-				container.appendChild(row);
-			});
-		}
+        // 性格椭圆条
+        const TRAIT_KEYS = ["外向", "内敛", "理性", "感性", "执拗"];
+        let traitValues = [72, 38, 80, 44, 63];
+        function buildTraits() {
+            const container = document.getElementById('traitsContainer');
+            container.innerHTML = '';
+            TRAIT_KEYS.forEach((name, idx) => {
+                const row = document.createElement('div');
+                row.className = 'trait-row';
+                const label = document.createElement('span');
+                label.className = 'trait-label';
+                label.textContent = name;
+                const ellipseWrap = document.createElement('div');
+                ellipseWrap.className = 'ellipse-progress';
+                const fill = document.createElement('div');
+                fill.className = 'ellipse-fill';
+                fill.style.width = traitValues[idx] + '%';
+                fill.textContent = traitValues[idx] + '%';
+                ellipseWrap.appendChild(fill);
+                const valSpan = document.createElement('span');
+                valSpan.className = 'trait-value';
+                valSpan.textContent = traitValues[idx] + '%';
+                const setVal = (newVal) => {
+                    newVal = Math.min(100, Math.max(0, newVal));
+                    traitValues[idx] = newVal;
+                    fill.style.width = newVal + '%';
+                    fill.textContent = newVal + '%';
+                    valSpan.textContent = newVal + '%';
+                };
+                let dragging = false;
+                const handleMove = (clientX) => {
+                    const rect = ellipseWrap.getBoundingClientRect();
+                    let x = clientX - rect.left;
+                    x = Math.min(rect.width, Math.max(0, x));
+                    let percent = (x / rect.width) * 100;
+                    setVal(Math.round(percent));
+                };
+                const onStart = (e) => {
+                    dragging = true;
+                    let cx = e.touches ? e.touches[0].clientX : e.clientX;
+                    if (cx) handleMove(cx);
+                    e.preventDefault();
+                };
+                const onMove = (e) => {
+                    if (!dragging) return;
+                    let cx = e.touches ? e.touches[0].clientX : e.clientX;
+                    if (cx) handleMove(cx);
+                };
+                const onEnd = () => { dragging = false; };
+                ellipseWrap.addEventListener('mousedown', onStart);
+                window.addEventListener('mousemove', onMove);
+                window.addEventListener('mouseup', onEnd);
+                ellipseWrap.addEventListener('touchstart', onStart);
+                window.addEventListener('touchmove', onMove);
+                window.addEventListener('touchend', onEnd);
+                ellipseWrap.addEventListener('click', (e) => { if(e.clientX) handleMove(e.clientX); });
+                row.appendChild(label);
+                row.appendChild(ellipseWrap);
+                row.appendChild(valSpan);
+                container.appendChild(row);
+            });
+        }
 
-		// 深层秉性
-		const FIVE_KEYS = ["危险性", "可接近度", "稳定性", "道德感"];
-		let fiveValues = [40, 70, 55, 82];
-		function buildFiveTraits() {
-			const container = document.getElementById('fiveTraitsContainer');
-			container.innerHTML = '';
-			FIVE_KEYS.forEach((name, idx) => {
-				const row = document.createElement('div');
-				row.className = 'trait-row';
-				const label = document.createElement('span');
-				label.className = 'trait-label';
-				label.textContent = name;
-				const ellipseWrap = document.createElement('div');
-				ellipseWrap.className = 'ellipse-progress';
-				const fill = document.createElement('div');
-				fill.className = 'ellipse-fill';
-				fill.style.width = fiveValues[idx] + '%';
-				fill.textContent = fiveValues[idx] + '%';
-				ellipseWrap.appendChild(fill);
-				const valSpan = document.createElement('span');
-				valSpan.className = 'trait-value';
-				valSpan.textContent = fiveValues[idx] + '%';
-				const setVal = (newVal) => {
-					newVal = Math.min(100, Math.max(0, newVal));
-					fiveValues[idx] = newVal;
-					fill.style.width = newVal + '%';
-					fill.textContent = newVal + '%';
-					valSpan.textContent = newVal + '%';
-				};
-				let dragging = false;
-				const handleMove = (clientX) => {
-					const rect = ellipseWrap.getBoundingClientRect();
-					let x = clientX - rect.left;
-					x = Math.min(rect.width, Math.max(0, x));
-					let percent = (x / rect.width) * 100;
-					setVal(Math.round(percent));
-				};
-				const onStart = (e) => {
-					dragging = true;
-					let cx = e.touches ? e.touches[0].clientX : e.clientX;
-					if (cx) handleMove(cx);
-					e.preventDefault();
-				};
-				const onMove = (e) => {
-					if (!dragging) return;
-					let cx = e.touches ? e.touches[0].clientX : e.clientX;
-					if (cx) handleMove(cx);
-				};
-				const onEnd = () => { dragging = false; };
-				ellipseWrap.addEventListener('mousedown', onStart);
-				window.addEventListener('mousemove', onMove);
-				window.addEventListener('mouseup', onEnd);
-				ellipseWrap.addEventListener('touchstart', onStart);
-				window.addEventListener('touchmove', onMove);
-				window.addEventListener('touchend', onEnd);
-				ellipseWrap.addEventListener('click', (e) => { if(e.clientX) handleMove(e.clientX); });
-				row.appendChild(label);
-				row.appendChild(ellipseWrap);
-				row.appendChild(valSpan);
-				container.appendChild(row);
-			});
-		}
+        // 深层秉性
+        const FIVE_KEYS = ["危险性", "可接近度", "稳定性", "道德感"];
+        let fiveValues = [40, 70, 55, 82];
+        function buildFiveTraits() {
+            const container = document.getElementById('fiveTraitsContainer');
+            container.innerHTML = '';
+            FIVE_KEYS.forEach((name, idx) => {
+                const row = document.createElement('div');
+                row.className = 'trait-row';
+                const label = document.createElement('span');
+                label.className = 'trait-label';
+                label.textContent = name;
+                const ellipseWrap = document.createElement('div');
+                ellipseWrap.className = 'ellipse-progress';
+                const fill = document.createElement('div');
+                fill.className = 'ellipse-fill';
+                fill.style.width = fiveValues[idx] + '%';
+                fill.textContent = fiveValues[idx] + '%';
+                ellipseWrap.appendChild(fill);
+                const valSpan = document.createElement('span');
+                valSpan.className = 'trait-value';
+                valSpan.textContent = fiveValues[idx] + '%';
+                const setVal = (newVal) => {
+                    newVal = Math.min(100, Math.max(0, newVal));
+                    fiveValues[idx] = newVal;
+                    fill.style.width = newVal + '%';
+                    fill.textContent = newVal + '%';
+                    valSpan.textContent = newVal + '%';
+                };
+                let dragging = false;
+                const handleMove = (clientX) => {
+                    const rect = ellipseWrap.getBoundingClientRect();
+                    let x = clientX - rect.left;
+                    x = Math.min(rect.width, Math.max(0, x));
+                    let percent = (x / rect.width) * 100;
+                    setVal(Math.round(percent));
+                };
+                const onStart = (e) => {
+                    dragging = true;
+                    let cx = e.touches ? e.touches[0].clientX : e.clientX;
+                    if (cx) handleMove(cx);
+                    e.preventDefault();
+                };
+                const onMove = (e) => {
+                    if (!dragging) return;
+                    let cx = e.touches ? e.touches[0].clientX : e.clientX;
+                    if (cx) handleMove(cx);
+                };
+                const onEnd = () => { dragging = false; };
+                ellipseWrap.addEventListener('mousedown', onStart);
+                window.addEventListener('mousemove', onMove);
+                window.addEventListener('mouseup', onEnd);
+                ellipseWrap.addEventListener('touchstart', onStart);
+                window.addEventListener('touchmove', onMove);
+                window.addEventListener('touchend', onEnd);
+                ellipseWrap.addEventListener('click', (e) => { if(e.clientX) handleMove(e.clientX); });
+                row.appendChild(label);
+                row.appendChild(ellipseWrap);
+                row.appendChild(valSpan);
+                container.appendChild(row);
+            });
+        }
 
-		function autoResizeAll() {
-			const textareas = document.querySelectorAll('.auto-height');
-			textareas.forEach(ta => {
-				ta.style.height = 'auto';
-				ta.style.height = (ta.scrollHeight) + 'px';
-				ta.addEventListener('input', function() {
-					this.style.height = 'auto';
-					this.style.height = (this.scrollHeight) + 'px';
-				});
-			});
-		}
+        function autoResizeAll() {
+            const textareas = document.querySelectorAll('.auto-height');
+            textareas.forEach(ta => {
+                ta.style.height = 'auto';
+                ta.style.height = (ta.scrollHeight) + 'px';
+                ta.addEventListener('input', function() {
+                    this.style.height = 'auto';
+                    this.style.height = (this.scrollHeight) + 'px';
+                });
+            });
+        }
 
-		function initButtonGroups() {
-			const groups = [
-				{ id: 'roleGroup', attr: 'data-role', default: '理想家' },
-				{ id: 'ideologyGroup', attr: 'data-ide', default: '理想主义' },
-				{ id: 'loveStyleGroup', attr: 'data-love', default: '观察型' },
-				{ id: 'alignmentGroup', attr: 'data-align', default: '绝对中立' }
-			];
-			groups.forEach(g => {
-				const btns = document.querySelectorAll(`#${g.id} .option-btn`);
-				btns.forEach(btn => {
-					btn.addEventListener('click', () => {
-						btns.forEach(b => b.classList.remove('active'));
-						btn.classList.add('active');
-					});
-					if(btn.getAttribute(g.attr) === g.default) btn.classList.add('active');
-				});
-			});
-		}
+        function initButtonGroups() {
+            const groups = [
+                { id: 'roleGroup', attr: 'data-role', default: '理想家' },
+                { id: 'ideologyGroup', attr: 'data-ide', default: '理想主义' },
+                { id: 'loveStyleGroup', attr: 'data-love', default: '观察型' },
+                { id: 'alignmentGroup', attr: 'data-align', default: '绝对中立' }
+            ];
+            groups.forEach(g => {
+                const btns = document.querySelectorAll(`#${g.id} .option-btn`);
+                btns.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        btns.forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                    });
+                    if(btn.getAttribute(g.attr) === g.default) btn.classList.add('active');
+                });
+            });
+        }
 
-		function exportCard() {
-			const card = document.getElementById('captureCard');
-			html2canvas(card, { scale: 2.5, backgroundColor: '#FFFFFF' }).then(canvas => {
-				const imgData = canvas.toDataURL('image/png');
-				const modal = document.createElement('div');
-				modal.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:9999;backdrop-filter:blur(4px);';
-				const img = document.createElement('img');
-				img.src = imgData;
-				img.style.maxWidth = '90%';
-				img.style.maxHeight = '70%';
-				img.style.borderRadius = '28px';
-				img.style.border = '2px solid #D4AF37';
-				const tip = document.createElement('p');
-				tip.innerText = '✨ 长按图片保存到相册 ✨';
-				tip.style.cssText = 'color:#F3EAC3;margin-top:20px;padding:6px 20px;background:#1E1E1C;border-radius:40px';
-				const closeBtn = document.createElement('button');
-				closeBtn.innerText = '关闭';
-				closeBtn.style.cssText = 'margin-top:20px;background:#D4AF37;border:none;padding:8px 24px;border-radius:60px;font-weight:bold;cursor:pointer';
-				closeBtn.onclick = () => document.body.removeChild(modal);
-				modal.appendChild(img);
-				modal.appendChild(tip);
-				modal.appendChild(closeBtn);
-				document.body.appendChild(modal);
-			}).catch(() => alert("截图失败"));
-		}
+        function exportCard() {
+            const card = document.getElementById('captureCard');
+            html2canvas(card, { scale: 2.5, backgroundColor: '#FFFFFF' }).then(canvas => {
+                const imgData = canvas.toDataURL('image/png');
+                const modal = document.createElement('div');
+                modal.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:9999;backdrop-filter:blur(4px);';
+                const img = document.createElement('img');
+                img.src = imgData;
+                img.style.maxWidth = '90%';
+                img.style.maxHeight = '70%';
+                img.style.borderRadius = '28px';
+                img.style.border = '2px solid #D4AF37';
+                const tip = document.createElement('p');
+                tip.innerText = '✨ 长按图片保存到相册 ✨';
+                tip.style.cssText = 'color:#F3EAC3;margin-top:20px;padding:6px 20px;background:#1E1E1C;border-radius:40px';
+                const closeBtn = document.createElement('button');
+                closeBtn.innerText = '关闭';
+                closeBtn.style.cssText = 'margin-top:20px;background:#D4AF37;border:none;padding:8px 24px;border-radius:60px;font-weight:bold;cursor:pointer';
+                closeBtn.onclick = () => document.body.removeChild(modal);
+                modal.appendChild(img);
+                modal.appendChild(tip);
+                modal.appendChild(closeBtn);
+                document.body.appendChild(modal);
+            }).catch(() => alert("截图失败"));
+        }
 
-		window.addEventListener('load', () => {
-			radarCanvas = document.getElementById('radarCanvas');
-			ctx = radarCanvas.getContext('2d');
-			radarCanvas.width = 500;
-			radarCanvas.height = 500;
-			drawRadarChart();
-			attachDragEvents();
-			buildDualSliders();
-			buildTraits();
-			buildFiveTraits();
-			initButtonGroups();
-			autoResizeAll();
-			document.getElementById('exportBtn').addEventListener('click', exportCard);
-		});
-	})();
+        window.addEventListener('load', () => {
+            radarCanvas = document.getElementById('radarCanvas');
+            ctx = radarCanvas.getContext('2d');
+            radarCanvas.width = 500;
+            radarCanvas.height = 500;
+            drawRadarChart();
+            attachDragEvents();
+            buildDualSliders();
+            buildTraits();
+            buildFiveTraits();
+            initButtonGroups();
+            autoResizeAll();
+            document.getElementById('exportBtn').addEventListener('click', exportCard);
+        });
+    })();
 </script>
 </body>
 </html>
